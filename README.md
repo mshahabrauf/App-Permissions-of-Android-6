@@ -37,3 +37,59 @@ dependencies {
     compile 'com.android.support:design:23.0.1'
 }
 ```
+# MyActivity
+
+```
+package com.myapp;
+public class MyActivity extends AppCompatActivity{
+// Set your permission here
+public static final List<AppPermissions> APP_PERMISSIONS = new ArrayList<AppPermissions>(){{
+        add(new AppPermissions(Manifest.permission.ACCESS_FINE_LOCATION,"Approximate location"));
+        add(new AppPermissions(Manifest.permission.ACCESS_COARSE_LOCATION,"Precise location"));
+    }};
+ @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        if(UserPermissions.checkIfTheUserPermissionNeeded(this,APP_PERMISSIONS))
+        {
+            // Wait for the activity result
+        }
+        else
+        {
+            //Loading Data in Views
+            loadData();
+        }
+        
+     }
+     @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+
+                case ApplicationConstants.REQUEST_CODE_ASK_MULTIPLE_PERMISSIONS:
+                    boolean AllpermissionsGranted = true;
+                   for (int i : grantResults)
+                       if(grantResults[i]==PackageManager.PERMISSION_DENIED)
+                           AllpermissionsGranted = false;
+                    if (AllpermissionsGranted)
+                    {
+                        // All Permissions Granted
+                        Toast.makeText(GetDirection.this, "All Permissions Granted", Toast.LENGTH_SHORT)
+                                .show();
+                        // Now load your data here
+                        loadData();
+                    }
+                    else
+                    {
+                        // Permission Denied
+                        Toast.makeText(GetDirection.this, "Some Permission is Denied", Toast.LENGTH_SHORT)
+                                .show();
+                    }
+                    break;
+
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                
+        }
+    }
+}
