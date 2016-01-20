@@ -1,4 +1,4 @@
-package com.attribe.yapjobs.app.Models;
+package com.myapp;
 
 /**
  * Created by Muhammad Shahab on 1/20/16.
