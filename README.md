@@ -6,7 +6,7 @@ This repository provide generic classes for Android 6 and previous versions requ
 # build.gradle
 
 
-
+```
  android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -36,3 +36,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:design:23.0.1'
 }
+```
