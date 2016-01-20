@@ -57,7 +57,7 @@ public static final List<AppPermissions> APP_PERMISSIONS = new ArrayList<AppPerm
         }
         else
         {
-            //Loading Data in Views because you already have all permission that you requested
+            //Loading Data in Views because you already have all permissions that you requested
             loadData();
         }
         
