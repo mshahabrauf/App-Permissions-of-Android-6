@@ -55,7 +55,8 @@ public class UserPermissions {
     private static boolean addPermission(String permission, Activity mActivity) {
         if (ContextCompat.checkSelfPermission(mActivity,permission) != PackageManager.PERMISSION_GRANTED) {
             // Check for Rationale Option
-            if (!ActivityCompat.shouldShowRequestPermissionRationale(mActivity,permission))
+            // Edited:let the Android decide whether it is required or not
+            // if (!ActivityCompat.shouldShowRequestPermissionRationale(mActivity,permission))
                 return false;
         }
         return true;
